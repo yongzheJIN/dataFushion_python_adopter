@@ -17,13 +17,15 @@ if __name__ == "__main__":
                             mysqlip=mysqlConfig['ip'], mysqlport=mysqlConfig['port'], mysqluser=mysqlConfig['user'],
                             mysqlpassword=mysqlConfig['password'],
                             mysqlpdatabase=mysqlConfig['database'], useReplace=wholeSetting['useReplace'],
-                            kafkaConsumerModel=kafkaSetting.get("consumerModel", None)) as resummer:
+                            kafkaConsumerModel=kafkaSetting.get("consumerModel", None),
+                            database_type=kafkaSetting['database_type'], target_database_type=mysqlConfig['database_type']) as resummer:
             # 重写了INSERT和UPDATE Function
-            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],schemaEvalution=wholeSetting['schemaEvalution'])
+            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],
+                                  schemaEvalution=wholeSetting['schemaEvalution'])
     ### tcp配置
     elif wholeSetting["serviceModel"] == "tcp":
         print("开启TCP模式")
-        with open("./config/consumerConfig/canal.json") as fp:
+        with open("./config/consumerConfig/canal.json", 'utf-8') as fp:
             canalSetting = json.load(fp)
         with canalConnector(canalhost=canalSetting["canalhost"], canalport=canalSetting["port"],
                             canaltopic=canalSetting["topic"], canalgroup=canalSetting["group"],

@@ -15,6 +15,10 @@ python Adopter是基于Canal写的python版本，主要开发的功能如下:
 另外如果你有任何关于数据迁移方面的问题，都可以留言，我会尽快回复。
 </p>
 
+## 安装依赖
+在pythonAdopter目录下执行以下命令<br/>
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirement.txt<br/>
+linux pip替换成pip3
 ## 优势
 
 优势在于:

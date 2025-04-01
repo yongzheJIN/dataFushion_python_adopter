@@ -1,0 +1,7 @@
+2024-03-11 16:40:50,010 - INFO - 连接mysql数据库成功
+2024-03-11 16:40:50,096 - INFO - 连接kafka成功
+2024-03-11 16:52:26,039 - INFO - 连接mysql数据库成功
+2024-03-11 16:52:26,040 - INFO - 连接kafka成功
+2024-03-11 16:54:17,047 - INFO - 连接mysql数据库成功
+2024-03-11 16:54:17,055 - INFO - 连接kafka成功
+2024-03-11 16:54:46,406 - INFO - 2024-03-11 16:54:46.406469: 事件提交成功,['REPLACE INTO xex_plus.bill_detail (`id2`,`cost_type`,`type`,`price`,`check_price`,`new_check_price`,`is_check`,`remark`,`bill_id`,`create_time`,`update_time`,`delflag`,`creater_id`,`institution_id`,`type_name`,`afk_price`,`is_recheck2`,`newColumns`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);', ['2', '322', None, None, None, None, None, None, None, '2024-01-11 21:40:36', '2024-03-11 16:54:25', '0', None, None, None, None, '0', None]]

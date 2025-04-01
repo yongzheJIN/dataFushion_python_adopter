@@ -100,17 +100,31 @@ class canalConnector:
                 header = entry.header
                 database = header.schemaName
                 table = header.tableName
-                if event_type == 5 or event_type == 4:
-                    if schemaEvalution and event_type==5:
-                        sql = row_change.sql.replace("\r", "")
-                        sql = sql.replace("\n", "")
-                        # 立即进行schema演绎
-                        res.append([sql,None])
-                    elif schemaEvalution and event_type==4:
+                # 4-create table; 5-alter table; 6-drop table
+                if event_type == 5 or event_type == 4 or event_type == 6:
+                    if schemaEvalution and event_type == 5:
                         schema_name = row_change.ddlSchemaName
                         sql = row_change.sql.replace("\r", "")
                         sql = sql.replace("\n", "")
-                        sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.")
+                        if schema_name not in sql:
+                            sql = sql.replace(f"ALTER TABLE", f"ALTER TABLE `{schema_name}`.", 1)
+                            sql = sql.replace(f"alter table", f"alter table `{schema_name}`.", 1)
+                        res.append([sql, None])
+                    elif schemaEvalution and event_type == 4:
+                        schema_name = row_change.ddlSchemaName
+                        sql = row_change.sql.replace("\r", "")
+                        sql = sql.replace("\n", "")
+                        if schema_name not in sql:
+                            sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.", 1)
+                            sql = sql.replace(f"create table", f"create table `{schema_name}`.", 1)
+                        res.append([sql, None])
+                    elif schemaEvalution and event_type == 6:
+                        schema_name = row_change.ddlSchemaName
+                        sql = row_change.sql.replace("\r", "")
+                        sql = sql.replace("\n", "")
+                        if schema_name not in sql:
+                            sql = sql.replace(f"DROP TABLE", f"DROP TABLE `{schema_name}`.", 1)
+                            sql = sql.replace(f"drop table", f"drop table `{schema_name}`.", 1)
                         res.append([sql, None])
                 else:
                     for row in row_change.rowDatas:

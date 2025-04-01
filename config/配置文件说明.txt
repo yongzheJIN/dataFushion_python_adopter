@@ -14,6 +14,7 @@
   "topic": "example",//主题
   "group": "test1",//小组名
   "consumerModel": "earliest"//earlist在你们插入任何标签的时候，消费者从最开始的地方消费，还有"latest"如果不存在标签从最后开始,标签是在消费成功后，消费者插入的
+  "database_type": "mysql/highgo"
 }
 ————————————————————————————————————————————————————————
 3. canal.json
@@ -56,4 +57,5 @@
   "user": "root",
   "password": "123456",
   "database": "test"
+  "database_type": "mysql/highgo"
 }

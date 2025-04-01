@@ -1,6 +1,6 @@
 {
   "serviceModel": "kafka",
   "useReplace": true,
-  "mapAll": true,
+  "mapAll": false,
   "schemaEvalution": true
 }

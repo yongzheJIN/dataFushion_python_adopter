@@ -6,4 +6,4 @@
 针对linux，如果是windows打开pycharm的同时他会自动source当前项目同路径下的虚拟环境，且windows可以通过界面操作。
 ______________________________________________________________________________
 4. 然后更新          pip3 python pip3 install --upgrade pip
-5. pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirement.txt
+5. pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirements.txt

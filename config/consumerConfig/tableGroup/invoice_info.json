@@ -1,0 +1,25 @@
+{
+  "invoice_info": {
+    "primaryKey": {
+      "institution_id": "institution_id",
+      "date": "date"
+    },
+    "data": {
+      "institution_id": "institution_id",
+      "date": "date",
+      "institution_name": "institution_name",
+      "consumerPrice": "consumerPrice",
+      "billPrice": "billPrice",
+      "depositPrice": "depositPrice",
+      "stanardPrice": "stanardPrice",
+      "collectionPrice": "collectionPrice",
+      "afkPrice": "afkPrice",
+      "totalPrice": "totalPrice",
+      "provisionalPrice": "provisionalPrice",
+      "overallPayment": "overallPayment",
+      "test2": "test2",
+      "test1": "test1"
+    }
+  },
+  "targetDatabase": "postgresql"
+}
