@@ -89,7 +89,7 @@ def __defaultInsertFunction(data, useReplace, database_type):
     table = data['table']
     database = data['database']
     after_data = data['data']['after']
-    primary_list = data['data'].get('primary_list', [])
+    primary_list = data['data'].get('primary_List', [])
 
     # 不同数据库使用不同字段包裹符
     quote = '`' if database_type.lower() == 'mysql' else '"'
@@ -292,7 +292,7 @@ def __defaultUpdateFunction(data, useReplace, database_type):
             return [update_sql, query_values]
 
         elif database_type.lower() in ('highgo', 'postgresql'):
-            primary_keys = [item['name'] for item in data['data']['primary_list']]
+            primary_keys = [item['name'] for item in data['data']['primary_List']]
             if not primary_keys:
                 raise ValueError("HighGo 替换语句需要主键信息（primary_list）")
 
@@ -317,7 +317,7 @@ def __defaultUpdateFunction(data, useReplace, database_type):
 
         set_clause = set_clause.rstrip(', ')
         where_clause = ' AND '.join([f'{quote}{item["name"]}{quote} = %s' for item in data['data']['primary_list']])
-        where_values = [item['value'] for item in data['data']['primary_list']]
+        where_values = [item['value'] for item in data['data']['primary_List']]
         query_values += where_values
 
         update_sql = f'UPDATE {quote}{database}{quote}.{quote}{table}{quote} SET {set_clause} WHERE {where_clause};'
@@ -460,7 +460,7 @@ def __indicationUpdateFunction(data, useReplace, database_type):
 # 生成DELETE语句不需要对照mapconfig完完全全的影子库
 def __defaultDeleteFunction(data, database_type):
     database = data['database']
-    primary_list = data['data']['primary_list']
+    primary_list = data['data']['primary_List']
     table = data['table']
     if database_type == "mysql":
         queto = "`"

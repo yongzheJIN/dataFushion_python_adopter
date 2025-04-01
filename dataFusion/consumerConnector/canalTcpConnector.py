@@ -10,7 +10,9 @@ from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 
 class canalConnector:
     def __init__(self, canalhost, canalport, canaltopic, canalgroup, mysqlip, mysqlport, mysqluser, mysqlpassword,
-                 mysqlpdatabase, filterCondition, canalusername=None, canalpassword=None, useReplace=False):
+                 mysqlpdatabase, filterCondition, canalusername=None, canalpassword=None,
+                 useReplace=False,
+                 database_type="mysql"):
         ### 连接canal
         self.canalhost = canalhost
         self.canalport = canalport
@@ -29,6 +31,7 @@ class canalConnector:
         self.mysqldatabase = mysqlpdatabase
         ### 是否使用replace
         self.useReplace = useReplace
+        self.database_type = database_type
         # 过滤条件
         self.filterCondition = filterCondition.encode('utf-8') if isinstance(filterCondition, str) else filterCondition
 
@@ -152,7 +155,8 @@ class canalConnector:
                         res = organizedFunction(event_type=event_type, funcInsert=funcInsert, funcUpdate=funcUpdate,
                                                 funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
                                                 DeleteTableList=DeleteTableList,
-                                                data=data, useReplace=self.useReplace, mapAll=mapAll, res=res)
+                                                data=data, useReplace=self.useReplace, mapAll=mapAll, res=res,
+                                                database_type=self.database_type)
             if res:
                 try:
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback

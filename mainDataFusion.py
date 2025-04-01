@@ -18,7 +18,8 @@ if __name__ == "__main__":
                             mysqlpassword=mysqlConfig['password'],
                             mysqlpdatabase=mysqlConfig['database'], useReplace=wholeSetting['useReplace'],
                             kafkaConsumerModel=kafkaSetting.get("consumerModel", None),
-                            database_type=kafkaSetting['database_type'], target_database_type=mysqlConfig['database_type']) as resummer:
+                            database_type=kafkaSetting['database_type'],
+                            target_database_type=mysqlConfig['database_type']) as resummer:
             # 重写了INSERT和UPDATE Function
             resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],
                                   schemaEvalution=wholeSetting['schemaEvalution'])
@@ -33,6 +34,7 @@ if __name__ == "__main__":
                             mysqlpassword=mysqlConfig['password'],
                             mysqlpdatabase=mysqlConfig['database'], canalusername=None, canalpassword=None,
                             useReplace=wholeSetting["useReplace"],
-                            filterCondition=canalSetting["filterCondition"]) as resummer:
+                            filterCondition=canalSetting["filterCondition"],
+                            database_type=canalSetting['database_type']) as resummer:
             resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],
                                   schemaEvalution=wholeSetting['schemaEvalution'])
